@@ -78,6 +78,15 @@ class TPG26x(object):
         # below
         self.serial = serial.Serial(port=port, baudrate=baudrate, timeout=1)
 
+    def _write(self, command):
+        """encodes command to byte array before passing to serial.write """
+        self.serial.write(command.encode())
+
+    def _readline(self):
+        """decodes response message to unicode before returning"""
+        msg = self.serial.readline()
+        return msg.decode()
+
     def _cr_lf(self, string):
         """Pad carriage return and line feed to a string
 
@@ -96,8 +105,10 @@ class TPG26x(object):
         :raises IOError: if the negative acknowledged or a unknown response
             is returned
         """
-        self.serial.write(self._cr_lf(command))
-        response = self.serial.readline()
+#        self.serial.write(self._cr_lf(command))
+        self._write(self._cr_lf(command))
+#        response = self.serial.readline()
+        response = self._readline()
         if response == self._cr_lf(self.NAK):
             message = 'Serial communication returned negative acknowledge'
             raise IOError(message)
@@ -112,8 +123,10 @@ class TPG26x(object):
         :returns: the raw data
         :rtype:str
         """
-        self.serial.write(self.ENQ)
-        data = self.serial.readline()
+#        self.serial.write(self.ENQ)
+        self._write(self.ENQ)
+#        data = self.serial.readline()
+        data = self._readline()
         return data.rstrip(self.LF).rstrip(self.CR)
 
     def _clear_output_buffer(self):
@@ -198,11 +211,13 @@ class TPG26x(object):
         :rtype: bool
         """
         self._send_command('RST')
-        self.serial.write(self.ENQ)
+#        self.serial.write(self.ENQ)
+        self._write(self.ENQ)
         self._clear_output_buffer()
         test_string_out = ''
         for char in 'a1':
-            self.serial.write(char)
+#            self.serial.write(char)
+            self._write(char)
             test_string_out += self._get_data().rstrip(self.ENQ)
         self._send_command(self.ETX)
         return test_string_out == 'a1'
