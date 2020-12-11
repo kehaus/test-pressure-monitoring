@@ -1,0 +1,63 @@
+{
+    "autoPan": false,
+    "autoVisibleOnly_x": false,
+    "autoVisibleOnly_y": false,
+    "auto_clear_data": false,
+    "autosave_nr": 30,
+    "do_autosave": true,
+    "frequency_state": false,
+    "gridopacity": 1.0,
+    "labels": {
+        "title_font_color": "#FFF",
+        "title_font_size": 20,
+        "title_text": "Pump-station chamber pressure",
+        "x_axis_data_type": "Time",
+        "x_axis_font_color": "#FFF",
+        "x_axis_font_size": 15,
+        "x_axis_unit": "s",
+        "y_axis_data_type": "Pressure",
+        "y_axis_font_color": "#FFF",
+        "y_axis_font_size": 15,
+        "y_axis_unit": "mbar"
+    },
+    "line_settings": {
+        "0": {
+            "line_alpha": 1.0,
+            "line_color": [
+                255,
+                170,
+                127,
+                255
+            ],
+            "line_width": 3
+        }
+    },
+    "mouseMode": 1,
+    "plotalpha": [
+        1.0,
+        false
+    ],
+    "relative_timestamp": true,
+    "x_zoom": true,
+    "xautorange": 1.0,
+    "xgridlines": true,
+    "xlim": [
+        -0.10241908806721461,
+        7.834007451714675
+    ],
+    "xscalelog": false,
+    "y_zoom": true,
+    "yautorange": 1.0,
+    "ygridlines": true,
+    "ylim": [
+        -7.903286966150247,
+        -7.899432475724134
+    ],
+    "yscalelog": true,
+    "zoom_lines": [
+        0,
+        1,
+        -1,
+        1
+    ]
+}
