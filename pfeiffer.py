@@ -138,6 +138,10 @@ class TPG26x(object):
             just_read = self.serial.read()
             out += just_read
         return out
+    
+    # ========================================
+    # 
+    # ========================================
 
     def program_number(self):
         """Return the firmware version
@@ -222,6 +226,19 @@ class TPG26x(object):
         self._send_command(self.ETX)
         return test_string_out == 'a1'
 
+    # ==========================================
+    # 
+    # ==========================================
+    
+    def get_pressure(self, gauge=1, verbose=False):
+        val, (status_code, status_msg) = self.pressure_gauge(gauge=gauge)
+        if verbose: 
+            print(status_msg)
+        return val
+    
+    def get_value(self):
+        return self.get_pressure()
+        
 
 class TPG262(TPG26x):
     """Driver for the TPG 262 dual channel measurement and control unit"""

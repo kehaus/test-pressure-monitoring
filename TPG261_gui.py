@@ -19,7 +19,9 @@ import numpy as np
 from PyQt5.QtWidgets import QApplication
 
 pp = os.path.dirname(os.getcwd())
-path_tpg = os.path.join(pp, 'time-plot-gui', 'src')
+path_tpg = os.path.join(pp, 'time-plot-gui')
+#if not path_tpg in sys.path:
+#    sys.path.append(path_tpg)
 
 test_mode = True
 if not test_mode:
@@ -34,11 +36,11 @@ else:
 from pfeiffer import TPG261
     
 
-t = TPG261()
+t = TPG261(port='/dev/ttyUSB1')
 dw = DeviceWrapper(t)
 
 # initialized UI
-start_application([dw], sampling_latency=0.05)
+#start_application([dw], sampling_latency=0.1)
 
 
 
