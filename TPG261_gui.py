@@ -36,8 +36,8 @@ else:
 from pfeiffer import TPG261
     
 
-t = TPG261(port='/dev/ttyUSB1')
-dw = DeviceWrapper(t)
+#t = TPG261(port='/dev/ttyUSB1')
+#dw = DeviceWrapper(t)
 
 # initialized UI
 #start_application([dw], sampling_latency=0.1)
